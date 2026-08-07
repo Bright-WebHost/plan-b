@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-natural: #FFFFFF;
+    --bg-card: #F9F9F9;
+    --bg-elevated: #F0F0F0;
+    --text-primary: #0A0A0A;
+    --text-muted: #555555;
+    --accent-yellow: #EBA60A; /* Modern vibrant yellow */
+    --accent-dark: #0A0A0A;
+    --border-natural: #E5E5E5;
+  }
+
+  /* Dark mode overrides (if needed, otherwise we stick to high contrast) */
+  .dark {
+    --bg-natural: #0A0A0A;
+    --bg-card: #141414;
+    --bg-elevated: #1F1F1F;
+    --text-primary: #FFFFFF;
+    --text-muted: #A3A3A3;
+    --border-natural: #262626;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-natural);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar matching high contrast theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-natural);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-yellow);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
