@@ -1,16 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  Hexagon,
-  Search,
-  Calculator,
-  Menu,
-  X,
-  ChevronDown,
-  Building2,
-  PhoneCall,
-  Briefcase
-} from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { SERVICE_CATEGORIES } from '../../data/mockData';
 import { RouteState } from '../../types';
 
@@ -28,14 +18,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenQuote
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   const isActive = (pageName: string) => currentRoute.page === pageName;
 
   const handleNavClick = (route: RouteState) => {
     onNavigate(route);
     setMobileMenuOpen(false);
-    setServicesDropdownOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -72,66 +60,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             About Us
           </button>
 
-          {/* Services Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setServicesDropdownOpen(true)}
-            onMouseLeave={() => setServicesDropdownOpen(false)}
-          >
-            <button
-              onClick={() => handleNavClick({ page: 'services' })}
-              className={`px-3 py-2 rounded-lg transition-colors flex items-center gap-1 ${
-                isActive('services')
-                  ? 'text-[var(--text-primary)] bg-[var(--accent-yellow)]/10 font-bold'
-                  : 'hover:text-[var(--text-primary)] hover:bg-[var(--accent-yellow)]/5'
-              }`}
-            >
-              Services <ChevronDown className="w-3.5 h-3.5" />
-            </button>
-
-            <AnimatePresence>
-              {servicesDropdownOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[800px] z-50"
-                >
-                  <div className="bg-[var(--bg-natural)] border border-[var(--border-natural)] rounded-2xl shadow-2xl p-6 grid grid-cols-3 gap-3 backdrop-blur-2xl">
-                    <div className="col-span-3 pb-2 border-b border-[var(--border-natural)] flex items-center justify-between">
-                      <span className="text-xs font-bold text-[var(--accent-yellow)] uppercase tracking-wider flex items-center gap-1.5">
-                        <Building2 className="w-4 h-4" /> All 13 Service Domains
-                      </span>
-                    </div>
-
-                    {SERVICE_CATEGORIES.map(cat => (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleNavClick({ page: 'services' })}
-                        className="p-2.5 rounded-xl hover:bg-[var(--accent-yellow)]/10 border border-transparent hover:border-[var(--accent-yellow)]/20 text-left transition-all group flex items-start gap-3"
-                      >
-                        <div>
-                          <div className="text-xs font-bold text-[var(--text-primary)] group-hover:text-[var(--text-primary)] transition-colors">
-                            {cat.name}
-                          </div>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
           <button
-            onClick={() => handleNavClick({ page: 'companies' })}
+            onClick={() => handleNavClick({ page: 'services' })}
             className={`px-3 py-2 rounded-lg transition-colors ${
-              isActive('companies')
+              isActive('services')
                 ? 'text-[var(--text-primary)] bg-[var(--accent-yellow)]/10 font-bold'
                 : 'hover:text-[var(--text-primary)] hover:bg-[var(--accent-yellow)]/5'
             }`}
           >
-            Companies We Represent
+            Services
           </button>
 
           <button
