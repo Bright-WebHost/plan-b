@@ -6,7 +6,6 @@ import { HeroSection } from '../home/HeroSection';
 import { MarqueeDivider } from '../home/MarqueeDivider';
 import { WhyChooseUsSection } from '../home/WhyChooseUsSection';
 import { ServiceCategoriesSection } from '../home/ServiceCategoriesSection';
-import { FeaturedPartnersSection } from '../home/FeaturedPartnersSection';
 import { StatisticsSection } from '../home/StatisticsSection';
 import { TestimonialsSection } from '../home/TestimonialsSection';
 import { CtaSection } from '../home/CtaSection';
@@ -25,7 +24,6 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) =
       <AboutSection onNavigate={onNavigate} />
       <WhyChooseUsSection />
       <ServiceCategoriesSection onNavigate={onNavigate} />
-      <FeaturedPartnersSection onNavigate={onNavigate} />
       <StatisticsSection />
       <TestimonialsSection />
       <CtaSection onNavigate={onNavigate} onOpenQuote={onOpenQuote} />

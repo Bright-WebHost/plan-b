@@ -32,7 +32,6 @@ export interface ServiceCategory {
   iconName: string;
   description: string;
   detailedOverview: string;
-  partnerCount: number;
   completedProjectsCount: number;
   startingPrice: string;
   subServices: string[];
@@ -40,7 +39,6 @@ export interface ServiceCategory {
   heroImage: string;
 }
 
-export interface PartnerCompany {
   id: string;
   name: string;
   logo: string;

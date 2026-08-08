@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, ArrowRight, Building2, Briefcase } from 'lucide-react';
-import { SERVICE_CATEGORIES, PARTNER_COMPANIES, PROJECTS_DATA } from '../../data/mockData';
+import { SERVICE_CATEGORIES, PROJECTS_DATA } from '../../data/mockData';
 import { RouteState } from '../../types';
 
 interface SearchModalProps {
@@ -23,11 +23,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
       )
     : SERVICE_CATEGORIES.slice(0, 4);
 
-  const filteredCompanies = trimmed
-    ? PARTNER_COMPANIES.filter(
-        p => p.name.toLowerCase().includes(trimmed) || p.categoryName.toLowerCase().includes(trimmed) || p.about.toLowerCase().includes(trimmed)
-      )
-    : PARTNER_COMPANIES.slice(0, 3);
+
 
   const filteredProjects = trimmed
     ? PROJECTS_DATA.filter(
@@ -40,10 +36,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
     onClose();
   };
 
-  const handleSelectCompany = (compIds: string) => {
-    onNavigate({ page: 'companies' });
-    onClose();
-  };
+
 
   const handleSelectProject = (projId: string) => {
     onNavigate({ page: 'projects' });
@@ -66,7 +59,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="Search services, partner companies, projects..."
+              placeholder="Search services and projects..."
               className="w-full bg-transparent text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none text-lg font-medium"
               autoFocus
             />
@@ -114,40 +107,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
               </div>
             )}
 
-            {/* Partner Companies */}
-            {filteredCompanies.length > 0 && (
-              <div>
-                <h4 className="text-xs font-bold tracking-wider text-[var(--text-primary)] uppercase mb-3 flex items-center gap-2">
-                  <Briefcase className="w-4 h-4 text-[var(--accent-yellow)]" /> Verified Partner Companies
-                </h4>
-                <div className="space-y-2">
-                  {filteredCompanies.map(comp => (
-                    <button
-                      key={comp.id}
-                      onClick={() => handleSelectCompany(comp.id)}
-                      className="w-full flex items-center justify-between p-3 rounded-xl bg-[var(--bg-natural)] hover:bg-[var(--accent-yellow)]/10 border border-[var(--border-natural)] hover:border-[var(--accent-yellow)]/50 transition-all text-left group"
-                    >
-                      <div className="flex items-center gap-3">
-                        <img
-                          src={comp.logo}
-                          alt={comp.name}
-                          className="w-10 h-10 rounded-lg object-cover border border-[var(--border-natural)] bg-white"
-                        />
-                        <div>
-                          <span className="text-sm font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent-yellow)]">
-                            {comp.name}
-                          </span>
-                          <span className="ml-2 text-xs px-2 py-0.5 rounded-full bg-[var(--accent-yellow)]/10 text-[var(--text-primary)] border border-[var(--accent-yellow)]/30 font-semibold">
-                            {comp.categoryName}
-                          </span>
-                        </div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] group-hover:translate-x-1 transition-all" />
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
 
             {/* Projects */}
             {filteredProjects.length > 0 && (
@@ -183,8 +142,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, onNav
             )}
 
             {trimmed &&
-              filteredCategories.length === 0 &&
-              filteredCompanies.length === 0 &&
               filteredProjects.length === 0 && (
                 <div className="text-center py-12 text-[var(--text-muted)]">
                   <p className="text-base font-medium">No results found for "{query}"</p>

@@ -35,7 +35,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQu
             transition={{ delay: 0.2 }}
             className="text-xl text-[#A3A3A3] max-w-2xl mx-auto font-medium"
           >
-            A unified ecosystem of premium services. One partnership, endless possibilities.
+            A unified ecosystem of premium services. One powerful team, endless possibilities. When you hire us for one service, you unlock them all.
           </motion.p>
         </div>
       </section>
@@ -64,7 +64,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQu
                         <Icon className="w-6 h-6" />
                       </div>
                       <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white text-xs font-bold rounded-lg uppercase">
-                        {service.partnerCount} Partners
+                        In-House Experts
                       </span>
                     </div>
                   </div>
@@ -95,7 +95,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQu
       <section className="py-20 bg-[#EBA60A] text-black text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl font-black uppercase font-serif-title mb-6">Need multiple services?</h2>
-          <p className="text-xl font-medium mb-8">Let us build a customized ecosystem package for your project.</p>
+          <p className="text-xl font-medium mb-8">We provide everything under one roof. Let us build your project seamlessly from start to finish.</p>
           <button
             onClick={onOpenQuote}
             className="px-8 py-4 bg-black text-white font-bold rounded-xl text-lg hover:opacity-90 transition-all uppercase tracking-wide inline-flex items-center gap-2"

@@ -23,13 +23,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuote }) => {
           {/* Column 1: Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <Hexagon className="w-8 h-8 text-[#EBA60A] fill-[#EBA60A]/20" />
-              <span className="text-2xl font-black tracking-tight text-[#FFFFFF] font-serif-title">
-                PLAN <span className="text-[#EBA60A]">B</span>
-              </span>
+              <img src="/logo-black.png" alt="PLAN B Logo" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-sm text-[#A3A3A3] leading-relaxed max-w-sm">
-              PLAN B is a premium partnership ecosystem of 4 businesses, providing high-quality services across 13 specialized domains.
+              PLAN B is a singular, premium provider offering high-quality services across 13 specialized domains under one powerful roof.
             </p>
           </div>
 
@@ -46,9 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuote }) => {
               <li>
                 <button onClick={() => nav('services')} className="hover:text-[#EBA60A] transition-colors">Services</button>
               </li>
-              <li>
-                <button onClick={() => nav('companies')} className="hover:text-[#EBA60A] transition-colors">Companies We Represent</button>
-              </li>
+
               <li>
                 <button onClick={() => nav('projects')} className="hover:text-[#EBA60A] transition-colors">Projects</button>
               </li>

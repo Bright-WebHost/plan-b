@@ -1,5 +1,6 @@
 import React from 'react';
-import { Hexagon } from 'lucide-react';
+import { Hexagon, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { RouteState } from '../../types';
 
 interface CtaSectionProps {
@@ -9,31 +10,48 @@ interface CtaSectionProps {
 
 export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate, onOpenQuote }) => {
   return (
-    <section className="py-24 bg-[#0A0A0A] relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=2000&q=80" alt="Background" className="w-full h-full object-cover" />
+    <section className="relative overflow-hidden bg-[#EBA60A] py-32 border-y-8 border-black">
+      {/* Background Graphic */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-10 pointer-events-none mix-blend-overlay">
+        <Hexagon className="w-[800px] h-[800px] text-black" strokeWidth={0.5} />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-        <Hexagon className="w-16 h-16 text-[#EBA60A] fill-[#EBA60A]/20 mx-auto mb-8" />
-        <h2 className="text-4xl md:text-6xl font-black mb-6 uppercase font-serif-title tracking-tight">Ready to start your next project?</h2>
-        <p className="text-xl text-[#A3A3A3] mb-10 max-w-2xl mx-auto">
-          Let’s talk about how our unified team can make your next big project a massive success.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <button
-            onClick={onOpenQuote}
-            className="px-8 py-4 bg-[#EBA60A] text-black font-bold rounded-xl text-lg hover:bg-[#EBA60A]/90 transition-all uppercase tracking-wide"
+      
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-black">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-sm font-bold text-black uppercase tracking-[0.4em] mb-6 block">START BUILDING</h2>
+          
+          <h3 
+            className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-10"
+            style={{ fontFamily: '"Inter Tight", sans-serif' }}
           >
-            Get a Free Quote
-          </button>
-          <button
-            onClick={() => onNavigate({ page: 'contact' })}
-            className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl text-lg hover:bg-white hover:text-black transition-all uppercase tracking-wide"
-          >
-            Contact Us
-          </button>
-        </div>
+            READY TO START <br className="hidden md:block"/> YOUR NEXT PROJECT?
+          </h3>
+          
+          <p className="text-xl md:text-2xl font-medium text-black/80 mb-12 max-w-3xl mx-auto leading-relaxed">
+            Let’s talk about how our unified team can make your next big project a massive success. One team. Zero headaches.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <button
+              onClick={onOpenQuote}
+              className="group px-10 py-5 bg-black text-white font-black text-sm hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-3 border-2 border-black"
+            >
+              Get a Free Quote
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <button
+              onClick={() => onNavigate({ page: 'contact' })}
+              className="group px-10 py-5 bg-transparent border-2 border-black text-black font-black text-sm hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-3"
+            >
+              Contact Us
+            </button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,7 +5,6 @@ import { Footer } from './components/layout/Footer';
 import { HomePage } from './components/pages/HomePage';
 import { AboutPage } from './components/pages/AboutPage';
 import { ServicesPage } from './components/pages/ServicesPage';
-import { CompaniesPage } from './components/pages/CompaniesPage';
 import { ProjectsPage } from './components/pages/ProjectsPage';
 import { ContactPage } from './components/pages/ContactPage';
 
@@ -53,9 +52,6 @@ export function App() {
         )}
         {route.page === 'services' && (
           <ServicesPage onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
-        )}
-        {route.page === 'companies' && (
-          <CompaniesPage onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
         )}
         {route.page === 'projects' && (
           <ProjectsPage

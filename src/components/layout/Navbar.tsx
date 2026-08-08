@@ -188,7 +188,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 { page: 'home', label: 'Home' },
                 { page: 'about', label: 'About Us' },
                 { page: 'services', label: 'Services' },
-                { page: 'companies', label: 'Companies We Represent' },
                 { page: 'projects', label: 'Projects' },
                 { page: 'contact', label: 'Contact Us' }
               ].map(item => (

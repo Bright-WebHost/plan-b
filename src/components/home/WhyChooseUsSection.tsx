@@ -13,6 +13,17 @@ export const WhyChooseUsSection: React.FC = () => {
           backgroundSize: '5rem 5rem'
         }}
       ></div>
+
+      {/* Massive Typography Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 overflow-hidden w-full h-full flex items-center justify-center opacity-[0.03]">
+        <h2 
+          className="text-[25vw] font-black uppercase text-transparent whitespace-nowrap" 
+          style={{ WebkitTextStroke: '2px black', fontFamily: '"Inter Tight", sans-serif' }}
+        >
+          PLAN B
+        </h2>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 
@@ -30,9 +41,9 @@ export const WhyChooseUsSection: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#e5e5e5] bg-white shadow-xl">
           {[
-            { title: 'Top-Tier Partners', desc: "We've handpicked the best companies across all 13 domains, so you don't have to worry about finding reliable experts.", icon: Shield },
-            { title: 'One Point of Contact', desc: 'Say goodbye to managing multiple vendors. We handle everything for you through a single, easy-to-use dedicated manager.', icon: Hexagon },
-            { title: 'Faster Results', desc: 'Because our partners work together under one roof, your projects get finished much faster without ever sacrificing quality.', icon: CheckCircle2 }
+            { title: 'In-House Experts', desc: "We provide the best professionals across all 13 domains, so you don't have to worry about finding reliable experts.", icon: Shield },
+            { title: 'One Point of Contact', desc: 'Say goodbye to managing multiple vendors. We handle everything internally for you through a single dedicated manager.', icon: Hexagon },
+            { title: 'Faster Results', desc: 'Because our unified team works together under one roof, your projects get finished much faster without ever sacrificing quality.', icon: CheckCircle2 }
           ].map((feature, i) => (
             <motion.div
               key={i}

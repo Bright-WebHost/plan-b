@@ -1,23 +1,24 @@
 import React from 'react';
 import { RouteState } from '../../types';
+import { motion } from 'framer-motion';
 
 interface HeroSectionProps {
   onNavigate: (route: RouteState) => void;
 }
 
 const showcaseServices = [
-  { name: 'Architecture & Design', image: '/images/Architecture & Design .jpg' },
-  { name: 'Interior Design', image: '/images/Interior-Design .jpg' },
-  { name: 'Construction Services', image: '/images/Construction-Services .jpg' },
-  { name: 'Electrical Contractors', image: '/images/Electrical-Contractors .jpg' },
-  { name: 'Solar Solutions', image: '/images/Solar-Solutions .jpg' },
-  { name: 'Home Automation', image: '/images/home-automation.png' },
-  { name: 'Deep Cleaning', image: '/images/Deep-Cleaning .jpg' },
-  { name: 'Pest Control', image: '/images/Pest-Control .jpg' },
-  { name: 'Landscaping', image: '/images/Landscaping .jpg' },
-  { name: 'Insurance Services', image: '/images/Insurance Services .jpg' },
-  { name: 'Plumbing Services', image: '/images/Plumbing Services.jpg' },
-  { name: 'Painting Services', image: '/images/Painting Services .jpg' }
+  { name: 'Architecture & Design', image: '/images/optimized/Architecture & Design .webp' },
+  { name: 'Interior Design', image: '/images/optimized/Interior-Design .webp' },
+  { name: 'Construction Services', image: '/images/optimized/Construction-Services .webp' },
+  { name: 'Electrical Contractors', image: '/images/optimized/Electrical-Contractors .webp' },
+  { name: 'Solar Solutions', image: '/images/optimized/Solar-Solutions .webp' },
+  { name: 'Home Automation', image: '/images/optimized/home-automation.webp' },
+  { name: 'Deep Cleaning', image: '/images/optimized/Deep-Cleaning .webp' },
+  { name: 'Pest Control', image: '/images/optimized/Pest-Control .webp' },
+  { name: 'Landscaping', image: '/images/optimized/Landscaping .webp' },
+  { name: 'Insurance Services', image: '/images/optimized/Insurance Services .webp' },
+  { name: 'Plumbing Services', image: '/images/optimized/Plumbing Services.webp' },
+  { name: 'Painting Services', image: '/images/optimized/Painting Services .webp' }
 ];
 
 // Distributed 6 images strictly across the left 0-18% bounds
@@ -60,6 +61,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       {/* Absolute Grid Background */}
       <div className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern"></div>
 
+      {/* Decorative Rotating Graphic */}
+      <motion.div 
+        animate={{ rotate: 360 }}
+        transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[-10%] md:top-[-20%] right-[-30%] md:right-[-10%] w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] pointer-events-none opacity-[0.04] z-0"
+      >
+        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" stroke="black" strokeWidth="0.1" strokeDasharray="1 1" />
+          <circle cx="50" cy="50" r="35" stroke="black" strokeWidth="0.2" />
+          <circle cx="50" cy="50" r="20" stroke="black" strokeWidth="0.1" />
+          <path d="M50 0 L50 100 M0 50 L100 50" stroke="black" strokeWidth="0.1" />
+          <path d="M15 15 L85 85 M15 85 L85 15" stroke="black" strokeWidth="0.1" />
+          <rect x="25" y="25" width="50" height="50" stroke="black" strokeWidth="0.1" transform="rotate(45 50 50)" />
+          <rect x="20" y="20" width="60" height="60" stroke="black" strokeWidth="0.1" />
+        </svg>
+      </motion.div>
+
       {/* Grid overlay for dark elements */}
       <div 
         className="absolute inset-0 z-20 pointer-events-none mix-blend-difference opacity-20 lg:hidden"
@@ -72,12 +90,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
       {/* Text Container */}
       <div className="relative z-10 w-full max-w-3xl mx-auto text-left lg:text-center flex flex-col items-start lg:items-center pointer-events-auto px-4 lg:px-0">
         <h1 
-          className="text-black tracking-tight mb-5"
+          className="text-black tracking-tighter mb-6 uppercase text-5xl md:text-7xl lg:text-[6rem]"
           style={{ 
             fontFamily: '"Inter Tight", sans-serif', 
-            fontSize: '3.5rem', 
-            lineHeight: '100%', 
-            fontWeight: 500 
+            lineHeight: '0.9', 
+            fontWeight: 900 
           }}
         >
           Everything You Need. <br />
@@ -85,12 +102,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </h1>
         
         <p 
-          className="max-w-[500px] mb-8"
+          className="max-w-[600px] mb-8 text-lg md:text-xl text-[#666]"
           style={{ 
             fontFamily: '"Inter Tight", sans-serif', 
-            color: '#666', 
-            fontSize: '1rem',
-            lineHeight: '170%', 
+            lineHeight: '160%', 
             fontWeight: 500 
           }}
         >

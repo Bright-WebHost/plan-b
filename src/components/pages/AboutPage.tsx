@@ -32,7 +32,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-[#A3A3A3] max-w-3xl mx-auto leading-relaxed"
           >
-            Born from the necessity to streamline fragmented service industries, PLAN B was established as a partnership of 4 visionaries. We saw the chaos in managing multiple vendors for architecture, security, cleaning, and tech. Our solution? A unified ecosystem delivering 13 premium service domains under one trusted brand.
+            Born from the necessity to streamline fragmented service industries, PLAN B was established as a single powerful entity. We saw the chaos in managing multiple vendors for architecture, security, cleaning, and tech. Our solution? A unified company delivering 13 premium services under one trusted brand.
           </motion.p>
         </div>
       </section>
@@ -65,7 +65,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
               <Target className="w-12 h-12 text-[#EBA60A] mb-6" />
               <h2 className="text-3xl font-black uppercase font-serif-title mb-4">Our Mission</h2>
               <p className="text-[#A3A3A3] leading-relaxed text-lg">
-                To aggregate, vet, and manage the top 1% of service providers across 13 domains, offering our clients a stress-free, single-point-of-contact experience that guarantees escrow-protected, flawless execution on every project.
+                To provide the top 1% of experts across 13 domains, offering our clients a stress-free, single-point-of-contact experience that guarantees flawless execution on every project.
               </p>
             </motion.div>
           </div>
@@ -82,7 +82,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: 'Excellence', icon: ShieldCheck, desc: 'We only partner with the best, ensuring top-tier quality.' },
+              { title: 'Excellence', icon: ShieldCheck, desc: 'We only hire the best in-house experts, ensuring top-tier quality.' },
               { title: 'Integrity', icon: HeartHandshake, desc: 'Transparent pricing, escrow protection, and honest communication.' },
               { title: 'Innovation', icon: Zap, desc: 'Constantly evolving our 13 domains with the latest technology.' },
               { title: 'Guidance', icon: Compass, desc: 'Acting as a single trusted advisor for all your project needs.' }
@@ -120,7 +120,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
             >
               <h3 className="text-4xl font-extrabold uppercase font-serif-title mb-6">The Hive Concept</h3>
               <p className="text-lg leading-relaxed mb-6 font-medium">
-                The Hive is our proprietary operational model. Just like a beehive works in perfect synchronization, our 13 service domains communicate flawlessly. When you hire our Architects, they are already coordinating with our Home Automation and Deep Cleaning partners. No silos, no delays, just perfect harmony.
+                The Hive is our proprietary operational model. Just like a beehive works in perfect synchronization, our 13 service domains communicate flawlessly. When you hire our Architects, they are already coordinating with our in-house Home Automation and Deep Cleaning teams. No silos, no delays, just perfect harmony.
               </p>
             </motion.div>
             
@@ -144,7 +144,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-sm font-bold text-[#EBA60A] uppercase tracking-widest mb-4">Partnership of 4</h2>
+            <h2 className="text-sm font-bold text-[#EBA60A] uppercase tracking-widest mb-4">Leadership</h2>
             <h3 className="text-4xl font-extrabold uppercase font-serif-title">Meet the Core Team</h3>
           </div>
           
@@ -164,7 +164,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
                   </div>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all"></div>
                 </div>
-                <h4 className="text-xl font-bold uppercase tracking-wide">Founding Partner {member}</h4>
+                <h4 className="text-xl font-bold uppercase tracking-wide">Director {member}</h4>
                 <p className="text-[#555555]">Board of Directors</p>
               </motion.div>
             ))}
@@ -192,7 +192,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
               <h2 className="text-sm font-bold text-[#EBA60A] uppercase tracking-widest mb-4">HQ & Operations</h2>
               <h3 className="text-4xl font-extrabold uppercase font-serif-title mb-6">Our Office</h3>
               <p className="text-[#A3A3A3] text-lg leading-relaxed mb-8">
-                Located in the heart of Mangalore, our headquarters acts as the central nervous system of The Hive. This is where our project managers monitor the progress of our 13 service domains, coordinate with our verified partners, and ensure every client request is executed with precision.
+                Located in the heart of Mangalore, our headquarters acts as the central nervous system of The Hive. This is where our project managers monitor the progress of our 13 service domains, coordinate with our in-house experts, and ensure every client request is executed with precision.
               </p>
               <button
                 onClick={() => onNavigate({ page: 'contact' })}
