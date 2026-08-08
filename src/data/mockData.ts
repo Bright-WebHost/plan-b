@@ -31,8 +31,8 @@ export const PARTNER_COMPANIES: PartnerCompany[] = [
   {
     id: 'indiqube',
     name: 'IndiQube',
-    logo: '/images/indiqube_p1_i1.jpeg',
-    heroBanner: '/images/indiqube_p3_i1.jpeg',
+    logo: '/logo.png',
+    heroBanner: '/images/Solar-Solutions .jpg',
     categoryId: 'solar',
     categoryName: 'Solar Solutions',
     rating: 4.9,
@@ -63,8 +63,8 @@ export const PARTNER_COMPANIES: PartnerCompany[] = [
   {
     id: 'techfin',
     name: 'Techfin Enterprises',
-    logo: '/images/techfin_en_p1_i5.png',
-    heroBanner: '/images/techfin_en_p2_i2.jpeg',
+    logo: '/logo.png',
+    heroBanner: '/images/home-automation.png',
     categoryId: 'automation-cctv',
     categoryName: 'Home Automation and cctv',
     rating: 4.8,
@@ -95,8 +95,8 @@ export const PARTNER_COMPANIES: PartnerCompany[] = [
   {
     id: 'intense-care',
     name: 'Intense Care Cleaning & Maintenance',
-    logo: '/images/intense_ca_p1_i1.png',
-    heroBanner: '/images/intense_ca_p2_i1.png',
+    logo: '/logo.png',
+    heroBanner: '/images/Deep-Cleaning .jpg',
     categoryId: 'deep-cleaning',
     categoryName: 'Deep Cleaning',
     rating: 4.9,
@@ -124,6 +124,39 @@ export const PARTNER_COMPANIES: PartnerCompany[] = [
     },
     projects: ['proj-intense-1'],
     featured: true
+  },
+  {
+    id: 'universal-insurance',
+    name: 'Universal Insurance Centre',
+    logo: '/logo.png',
+    heroBanner: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80',
+    categoryId: 'insurance',
+    categoryName: 'Insurance Services',
+    rating: 4.9,
+    reviewCount: 215,
+    verified: true,
+    yearsInBusiness: 20,
+    completedProjects: 3000,
+    teamSize: 'Dedicated Claims Team',
+    location: 'South Canara and Udupi',
+    about: 'Universal Insurance Centre offers complete insurance protection tailored for you and your business. From individual motor and health policies to complex corporate and marine risks, we deliver dedicated claims support.',
+    servicesOffered: [
+      'Motor Insurance',
+      'Health Insurance',
+      'Travel Insurance',
+      'Marine & Fire Insurance',
+      'Erection All Risk (EAR)',
+      'Personal Accident & Workmen Compensation'
+    ],
+    certifications: ['30+ National Awards for Excellence'],
+    contact: {
+      phone: '+91 8971211900',
+      email: 'info@universalinsurances.in',
+      website: 'https://www.universalinsurances.in',
+      address: 'Branch Office & Claims Assistance, South Canara'
+    },
+    projects: ['proj-universal-1'],
+    featured: true
   }
 ];
 
@@ -138,11 +171,11 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: 'Karnataka',
     completionDate: '2023',
     budgetRange: 'Enterprise',
-    image: '/images/indiqube_p2_i1.jpeg',
+    image: '/images/Solar-Solutions .jpg',
     description: 'Transitioning 3 Lac Sq.ft. Myntra HQ into 100% green power with a combination of Rooftop Solar Power and Power supply via Grid leveraging IndiQube\'s Solar Farm in Yadgir, Karnataka.',
     specs: ['3 Lac Sq.ft. Transitioned', 'Rooftop + Grid Supply', 'IGBC Platinum Certification'],
     gallery: [
-      '/images/indiqube_p2_i1.jpeg'
+      '/images/Solar-Solutions .jpg'
     ]
   },
   {
@@ -155,11 +188,11 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: 'Mangalore',
     completionDate: '2025',
     budgetRange: 'Enterprise',
-    image: '/images/techfin_en_p1_i11.jpeg',
+    image: '/images/home-automation.png',
     description: 'Extensive deployment of Securus cameras, PTZ, and ANPR systems across Mangalore for enhanced city-wide monitoring and security.',
     specs: ['ANPR Systems', 'Smart Cloud AI Analytics', 'eAlert Integration'],
     gallery: [
-      '/images/techfin_en_p1_i11.jpeg'
+      '/images/home-automation.png'
     ]
   },
   {
@@ -172,11 +205,28 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: 'Mangalore',
     completionDate: 'Ongoing',
     budgetRange: 'Commercial',
-    image: '/images/intense_ca_p3_i1.png',
+    image: '/images/Deep-Cleaning .jpg',
     description: 'Daily housekeeping and facade glass cleaning for Prestige Group commercial properties, utilizing trained staff and eco-friendly chemicals.',
     specs: ['Facade Glass Cleaning', 'Daily Housekeeping', 'Transparent AMC Pricing'],
     gallery: [
-      '/images/intense_ca_p3_i1.png'
+      '/images/Deep-Cleaning .jpg'
+    ]
+  },
+  {
+    id: 'proj-universal-1',
+    title: 'Comprehensive Corporate Insurance Portfolio',
+    category: 'Insurance',
+    categoryId: 'insurance',
+    companyId: 'universal-insurance',
+    companyName: 'Universal Insurance Centre',
+    location: 'South Canara',
+    completionDate: 'Ongoing',
+    budgetRange: 'Enterprise',
+    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80',
+    description: 'Providing extensive corporate insurance coverage including fire, marine, and erection all risk for large-scale businesses across the region, with dedicated end-to-end claims support.',
+    specs: ['End-to-End Coverage', 'Dedicated Claims Support', '30+ National Awards'],
+    gallery: [
+      'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80'
     ]
   }
 ];
