@@ -4,7 +4,7 @@ import { Shield, Hexagon, CheckCircle2 } from 'lucide-react';
 
 export const WhyChooseUsSection: React.FC = () => {
   return (
-    <section className="py-24 bg-[#ffffff] relative overflow-hidden">
+    <section className="py-8 md:py-16 bg-[#ffffff] relative overflow-hidden">
       {/* Absolute Grid Background */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none"
@@ -25,9 +25,9 @@ export const WhyChooseUsSection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
           <h2 
-            className="text-xs font-bold text-[#EBA60A] uppercase tracking-[0.2em] mb-4"
+            className="text-xs font-bold text-black uppercase tracking-[0.2em] mb-4"
             style={{ fontFamily: '"Inter Tight", sans-serif' }}
           >
             WHY CHOOSE US
@@ -39,7 +39,7 @@ export const WhyChooseUsSection: React.FC = () => {
             The PLAN B Advantage
           </h3>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-[#e5e5e5] bg-white shadow-xl">
+        <div className="grid grid-cols-3 gap-0 border-2 border-black bg-[#EBA60A]" style={{ boxShadow: '12px 12px 0px 0px rgba(0,0,0,1)' }}>
           {[
             { title: 'In-House Experts', desc: "We provide the best professionals across all 13 domains, so you don't have to worry about finding reliable experts.", icon: Shield },
             { title: 'One Point of Contact', desc: 'Say goodbye to managing multiple vendors. We handle everything internally for you through a single dedicated manager.', icon: Hexagon },
@@ -51,22 +51,22 @@ export const WhyChooseUsSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ delay: i * 0.1 }}
-              className="p-10 border-b md:border-b-0 border-[#e5e5e5] md:border-r last:border-b-0 md:last:border-r-0 hover:bg-[#fafafa] transition-all group relative overflow-hidden"
+              className="p-3 sm:p-6 md:p-10 border-r-2 border-black last:border-r-0 hover:bg-black transition-all group relative overflow-hidden"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-[#EBA60A] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div className="absolute top-0 left-0 w-full h-1 bg-white transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               
-              <div className="w-14 h-14 bg-[#EBA60A]/10 text-[#EBA60A] rounded-xl flex items-center justify-center mb-8 transition-transform duration-500 group-hover:-translate-y-1 group-hover:bg-[#EBA60A] group-hover:text-black">
-                <feature.icon className="w-6 h-6" strokeWidth={1.5} />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-14 bg-black/10 text-black rounded-none border-2 border-transparent flex items-center justify-center mb-3 sm:mb-4 md:mb-8 transition-all duration-500 group-hover:-translate-y-1 group-hover:bg-transparent group-hover:border-[#EBA60A] group-hover:text-[#EBA60A]">
+                <feature.icon className="w-4 h-4 md:w-6 md:h-6" strokeWidth={1.5} />
               </div>
               <h4 
-                className="text-xl font-bold mb-4 text-black uppercase tracking-wide"
+                className="text-[10px] leading-tight sm:text-sm md:text-xl font-black mb-2 md:mb-4 text-black uppercase tracking-wide group-hover:text-white transition-colors duration-500 break-words"
                 style={{ fontFamily: '"Inter Tight", sans-serif' }}
               >
                 {feature.title}
               </h4>
               <p 
-                className="text-[#666] leading-relaxed"
-                style={{ fontFamily: '"Inter Tight", sans-serif', fontWeight: 500 }}
+                className="text-[9px] sm:text-[11px] md:text-base text-black/80 leading-snug md:leading-relaxed font-medium group-hover:text-white/80 transition-colors duration-500"
+                style={{ fontFamily: '"Inter Tight", sans-serif' }}
               >
                 {feature.desc}
               </p>

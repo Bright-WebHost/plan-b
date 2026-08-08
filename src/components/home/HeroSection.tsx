@@ -21,181 +21,241 @@ const showcaseServices = [
   { name: 'Painting Services', image: '/images/optimized/Painting Services .webp' }
 ];
 
-// Distributed 6 images strictly across the left 0-18% bounds
-const leftStaticImages = [
-  { index: 0, top: '10%', left: '2%', size: 'w-32 h-32 md:w-40 md:h-40' },
-  { index: 1, top: '38%', left: '10%', size: 'w-40 h-40 md:w-48 md:h-48' },
-  { index: 2, top: '70%', left: '1%', size: 'w-36 h-36 md:w-44 md:h-44' },
-  { index: 3, top: '20%', left: '15%', size: 'w-24 h-24 md:w-32 md:h-32' },
-  { index: 4, top: '82%', left: '12%', size: 'w-32 h-32 md:w-40 md:h-40' },
-  { index: 5, top: '52%', left: '18%', size: 'w-24 h-24 md:w-32 md:h-32' },
+const hexClipPath = {
+  clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
+};
+
+// ---------------------------------------------------------
+// DESKTOP COORDINATES (W: 200px, H: 174px)
+// Verified perfect vertical stacking
+// ---------------------------------------------------------
+const desktopLeft = [
+  { index: 0, x: 0, y: 87 },
+  { index: 1, x: 0, y: 261 },
+  { index: 2, x: 0, y: 435 },
+  { index: 3, x: 150, y: 0 },
+  { index: 4, x: 150, y: 174 },
+  { index: 5, x: 150, y: 348 },
 ];
 
-// Distributed 6 images strictly across the right 0-18% bounds
-const rightStaticImages = [
-  { index: 6, top: '12%', right: '5%', size: 'w-36 h-36 md:w-44 md:h-44' },
-  { index: 7, top: '42%', right: '12%', size: 'w-40 h-40 md:w-48 md:h-48' },
-  { index: 8, top: '72%', right: '2%', size: 'w-32 h-32 md:w-40 md:h-40' },
-  { index: 9, top: '25%', right: '15%', size: 'w-24 h-24 md:w-32 md:h-32' },
-  { index: 10, top: '86%', right: '14%', size: 'w-36 h-36 md:w-44 md:h-44' },
-  { index: 11, top: '56%', right: '18%', size: 'w-24 h-24 md:w-32 md:h-32' },
+const desktopRight = [
+  { index: 6, x: 0, y: 0 },
+  { index: 7, x: 0, y: 174 },
+  { index: 8, x: 0, y: 348 },
+  { index: 9, x: 150, y: 87 },
+  { index: 10, x: 150, y: 261 },
+  { index: 11, x: 150, y: 435 },
 ];
+
+// ---------------------------------------------------------
+// FIXED MOBILE COORDINATES (W: 90px, H: 78px)
+// Mathematically perfect interlocking horizontal packing
+// ---------------------------------------------------------
+const mobileTopHex = [
+  // Top Row (3 items)
+  { index: 0, x: 0, y: 0 },
+  { index: 1, x: 135, y: 0 },
+  { index: 2, x: 270, y: 0 },
+  // Middle Row (2 items nested in the gaps)
+  { index: 3, x: 67.5, y: 39 },
+  { index: 4, x: 202.5, y: 39 },
+  // Bottom Row (1 item nested in the gap)
+  { index: 5, x: 135, y: 78 },
+];
+
+const mobileBottomHex = [
+  // Top Row (1 item nested)
+  { index: 6, x: 135, y: 0 },
+  // Middle Row (2 items nested)
+  { index: 7, x: 67.5, y: 39 },
+  { index: 8, x: 202.5, y: 39 },
+  // Bottom Row (3 items)
+  { index: 9, x: 0, y: 78 },
+  { index: 10, x: 135, y: 78 },
+  { index: 11, x: 270, y: 78 },
+];
+
+const getFloatAnimation = (index: number) => ({
+  y: [0, index % 2 === 0 ? -4 : 4, 0],
+  transition: {
+    duration: 5 + (index % 3),
+    repeat: Infinity,
+    ease: "easeInOut" as const,
+    delay: index * 0.15,
+  }
+});
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
   return (
-    <section className="relative min-h-screen pt-24 lg:pt-0 lg:flex lg:items-center lg:justify-center overflow-hidden bg-[#ffffff]">
-      <style>
-        {`
-          .bg-grid-pattern {
-            background-image: linear-gradient(to right, #f2f2f2 1px, transparent 1px), linear-gradient(to bottom, #f2f2f2 1px, transparent 1px);
-            background-size: 25vw 25vw;
-          }
-          @media (min-width: 1024px) {
-            .bg-grid-pattern {
-              background-size: 5rem 5rem;
-            }
-          }
-        `}
-      </style>
+    <section className="relative min-h-[100dvh] flex flex-col justify-between items-center py-6 lg:py-0 lg:flex-row lg:justify-center overflow-hidden bg-[#EBA60A]">
       
-      {/* Absolute Grid Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none bg-grid-pattern"></div>
-
-      {/* Decorative Rotating Graphic */}
-      <motion.div 
-        animate={{ rotate: 360 }}
-        transition={{ duration: 150, repeat: Infinity, ease: "linear" }}
-        className="absolute top-[-10%] md:top-[-20%] right-[-30%] md:right-[-10%] w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] pointer-events-none opacity-[0.04] z-0"
-      >
-        <svg viewBox="0 0 100 100" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="48" stroke="black" strokeWidth="0.1" strokeDasharray="1 1" />
-          <circle cx="50" cy="50" r="35" stroke="black" strokeWidth="0.2" />
-          <circle cx="50" cy="50" r="20" stroke="black" strokeWidth="0.1" />
-          <path d="M50 0 L50 100 M0 50 L100 50" stroke="black" strokeWidth="0.1" />
-          <path d="M15 15 L85 85 M15 85 L85 15" stroke="black" strokeWidth="0.1" />
-          <rect x="25" y="25" width="50" height="50" stroke="black" strokeWidth="0.1" transform="rotate(45 50 50)" />
-          <rect x="20" y="20" width="60" height="60" stroke="black" strokeWidth="0.1" />
-        </svg>
-      </motion.div>
-
-      {/* Grid overlay for dark elements */}
+      {/* Clean Architectural Grid Background */}
       <div 
-        className="absolute inset-0 z-20 pointer-events-none mix-blend-difference opacity-20 lg:hidden"
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]"
         style={{
-          backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-          backgroundSize: '25vw 25vw'
+          backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)',
+          backgroundSize: '80px 80px' 
         }}
       ></div>
 
-      {/* Text Container */}
-      <div className="relative z-10 w-full max-w-3xl mx-auto text-left lg:text-center flex flex-col items-start lg:items-center pointer-events-auto px-4 lg:px-0">
+      {/* ------------------------------------------------ */}
+      {/* MOBILE ONLY: Flawless Top Cluster */}
+      {/* ------------------------------------------------ */}
+      <div className="lg:hidden relative z-10 w-full flex justify-center pointer-events-auto mt-2">
+        <div className="relative w-[360px] h-[156px] scale-95 sm:scale-100 origin-top">
+          {mobileTopHex.map((pos) => (
+            <motion.div 
+              key={`mob-top-${pos.index}`}
+              animate={getFloatAnimation(pos.index)}
+              className="absolute flex items-center justify-center group drop-shadow-xl"
+              style={{ left: pos.x, top: pos.y, width: '90px', height: '78px' }}
+            >
+              <div className="absolute inset-0 bg-white shadow-sm" style={hexClipPath} onClick={() => onNavigate({ page: 'services' })}>
+                <div className="absolute inset-[3px] overflow-hidden" style={hexClipPath}>
+                  <img src={showcaseServices[pos.index].image} alt="" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-95 z-10"></div>
+                  <div className="absolute bottom-[15%] left-0 right-0 flex justify-center z-20 px-1 w-[90%] mx-auto">
+                    <span className="text-white text-[6.5px] font-black uppercase tracking-wider text-center leading-[1.1] break-words">
+                      {showcaseServices[pos.index].name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ------------------------------------------------ */}
+      {/* Main Center Text Container */}
+      {/* ------------------------------------------------ */}
+      <div className="relative z-30 w-full max-w-[95vw] lg:max-w-[550px] xl:max-w-[700px] 2xl:max-w-[850px] mx-auto text-center flex flex-col items-center justify-center pointer-events-auto px-2 lg:px-0 flex-grow my-4 lg:my-0">
         <h1 
-          className="text-black tracking-tighter mb-6 uppercase text-5xl md:text-7xl lg:text-[6rem]"
+          className="text-white uppercase tracking-tighter mb-4 lg:mb-6 text-[2.75rem] leading-[1] sm:text-6xl lg:text-[4.5rem] xl:text-[5.5rem] 2xl:text-[6.5rem]"
           style={{ 
             fontFamily: '"Inter Tight", sans-serif', 
-            lineHeight: '0.9', 
-            fontWeight: 900 
+            fontWeight: 900,
+            textShadow: '0px 10px 30px rgba(0, 0, 0, 0.25)' 
           }}
         >
-          Everything You Need. <br />
-          All in One Place.
+          {/* MOBILE SPECIFIC BREAKS */}
+          <span className="block lg:hidden">
+            Everything You Need.<br/> All In One Place.
+          </span>
+          {/* DESKTOP SPECIFIC BREAKS */}
+          <span className="hidden lg:block leading-[0.9]">
+            Everything<br/> You Need.<br/> All In One<br/> Place.
+          </span>
         </h1>
         
         <p 
-          className="max-w-[600px] mb-8 text-lg md:text-xl text-[#666]"
+          className="max-w-[600px] mb-6 lg:mb-8 text-sm md:text-lg text-black px-4"
           style={{ 
             fontFamily: '"Inter Tight", sans-serif', 
-            lineHeight: '160%', 
-            fontWeight: 500 
+            lineHeight: '140%', 
+            fontWeight: 800 
           }}
         >
-          Why stress over managing a dozen different vendors? PLAN B seamlessly connects 13 essential services—from architecture to insurance—making your next big project easier and faster than ever.
+          Skip the hassle of multiple vendors. PLAN B connects 13 essential services to make your next project faster and easier.
         </p>
         
         <button
           onClick={() => onNavigate({ page: 'services' })}
-          className="bg-[#EBA60A] text-black hover:bg-[#d69608] transition-colors flex items-center justify-center relative z-10"
+          className="bg-black text-white hover:bg-white hover:text-black transition-colors flex items-center justify-center relative z-40 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
           style={{
             fontFamily: '"Inter Tight", sans-serif',
-            fontSize: '0.9rem',
-            fontWeight: 700,
+            fontSize: '1rem',
+            fontWeight: 900,
             borderRadius: '0px',
-            width: '50vw',
-            height: '15vw',
-            maxWidth: '220px',
-            maxHeight: '60px',
-            marginLeft: '-1px'
+            width: '100%',
+            maxWidth: '240px',
+            height: '56px',
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase'
           }}
         >
           Start Your Project
         </button>
       </div>
 
-      {/* DESKTOP: Left Static Images (Indices 0-5) */}
-      <div className="hidden lg:block absolute inset-0 pointer-events-none z-10">
-        {leftStaticImages.map((img) => (
-          <div 
-            key={`left-${img.index}`}
-            className="absolute flex flex-col items-center justify-center pointer-events-auto gap-2 group"
-            style={{ top: img.top, left: img.left }}
-          >
-            <img 
-              src={showcaseServices[img.index].image} 
-              alt={showcaseServices[img.index].name} 
-              className={`${img.size} object-cover shadow-lg transition-transform hover:scale-105`}
-              style={{ borderRadius: '0px' }} 
-            />
-            <span className="text-[10px] md:text-xs font-bold text-black uppercase tracking-wider bg-white/80 backdrop-blur-md px-3 py-1 text-center shadow-sm border border-black/10">
-              {showcaseServices[img.index].name}
-            </span>
-          </div>
-        ))}
+      {/* ------------------------------------------------ */}
+      {/* MOBILE ONLY: Flawless Bottom Cluster */}
+      {/* ------------------------------------------------ */}
+      <div className="lg:hidden relative z-10 w-full flex justify-center pointer-events-auto mb-2">
+        <div className="relative w-[360px] h-[156px] scale-95 sm:scale-100 origin-bottom">
+          {mobileBottomHex.map((pos) => (
+            <motion.div 
+              key={`mob-bot-${pos.index}`}
+              animate={getFloatAnimation(pos.index)}
+              className="absolute flex items-center justify-center group drop-shadow-xl"
+              style={{ left: pos.x, top: pos.y, width: '90px', height: '78px' }}
+            >
+              <div className="absolute inset-0 bg-white shadow-sm" style={hexClipPath} onClick={() => onNavigate({ page: 'services' })}>
+                <div className="absolute inset-[3px] overflow-hidden" style={hexClipPath}>
+                  <img src={showcaseServices[pos.index].image} alt="" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent opacity-95 z-10"></div>
+                  <div className="absolute bottom-[15%] left-0 right-0 flex justify-center z-20 px-1 w-[90%] mx-auto">
+                    <span className="text-white text-[6.5px] font-black uppercase tracking-wider text-center leading-[1.1] break-words">
+                      {showcaseServices[pos.index].name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
 
-        {/* DESKTOP: Right Static Images (Indices 6-11) */}
-        {rightStaticImages.map((img) => (
-          <div 
-            key={`right-${img.index}`}
-            className="absolute flex flex-col items-center justify-center pointer-events-auto gap-2 group"
-            style={{ top: img.top, right: img.right }}
+      {/* ------------------------------------------------ */}
+      {/* DESKTOP ONLY: Protected Left Cluster */}
+      {/* ------------------------------------------------ */}
+      <div className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 w-[350px] h-[609px] z-10 origin-left scale-[0.65] xl:scale-[0.85] 2xl:scale-100">
+        {desktopLeft.map((pos) => (
+          <motion.div 
+            key={`left-${pos.index}`}
+            animate={getFloatAnimation(pos.index)}
+            className="absolute flex items-center justify-center group pointer-events-auto drop-shadow-2xl"
+            style={{ left: pos.x, top: pos.y, width: '200px', height: '174px' }}
           >
-            <img 
-              src={showcaseServices[img.index].image} 
-              alt={showcaseServices[img.index].name} 
-              className={`${img.size} object-cover shadow-lg transition-transform hover:scale-105`}
-              style={{ borderRadius: '0px' }} 
-            />
-            <span className="text-[10px] md:text-xs font-bold text-black uppercase tracking-wider bg-white/80 backdrop-blur-md px-3 py-1 text-center shadow-sm border border-black/10">
-              {showcaseServices[img.index].name}
-            </span>
-          </div>
+            <div className="absolute inset-0 bg-white transition-transform duration-500 group-hover:scale-105 group-hover:z-50 cursor-pointer shadow-lg" style={hexClipPath} onClick={() => onNavigate({ page: 'services' })}>
+              <div className="absolute inset-[4px] overflow-hidden" style={hexClipPath}>
+                <img src={showcaseServices[pos.index].image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                <div className="absolute bottom-[20%] left-0 right-0 flex justify-center z-20 px-2 w-[85%] mx-auto">
+                  <span className="text-white text-[11px] font-black uppercase tracking-wider text-center leading-[1.2] drop-shadow-md break-words">
+                    {showcaseServices[pos.index].name}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         ))}
       </div>
 
-      {/* MOBILE: Staircase Grid */}
-      <div className="lg:hidden w-full mt-10 grid grid-cols-4 relative z-10 pointer-events-auto pb-10">
-        {/* Row 1 */}
-        <img src={showcaseServices[3].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[6].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[1].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[9].image} alt="" className="w-full aspect-square object-cover" />
-        
-        {/* Row 2 */}
-        <img src={showcaseServices[0].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[4].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[7].image} alt="" className="w-full aspect-square object-cover" />
-        <div className="w-full aspect-square"></div>
-        
-        {/* Row 3 */}
-        <img src={showcaseServices[8].image} alt="" className="w-full aspect-square object-cover" />
-        <img src={showcaseServices[5].image} alt="" className="w-full aspect-square object-cover" />
-        <div className="w-full aspect-square"></div>
-        <div className="w-full aspect-square"></div>
-        
-        {/* Row 4 */}
-        <img src={showcaseServices[2].image} alt="" className="w-full aspect-square object-cover" />
-        <div className="w-full aspect-square"></div>
-        <div className="w-full aspect-square"></div>
-        <div className="w-full aspect-square"></div>
+      {/* ------------------------------------------------ */}
+      {/* DESKTOP ONLY: Protected Right Cluster */}
+      {/* ------------------------------------------------ */}
+      <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[609px] z-10 origin-right scale-[0.65] xl:scale-[0.85] 2xl:scale-100">
+        {desktopRight.map((pos) => (
+          <motion.div 
+            key={`right-${pos.index}`}
+            animate={getFloatAnimation(pos.index)}
+            className="absolute flex items-center justify-center group pointer-events-auto drop-shadow-2xl"
+            style={{ right: pos.x, top: pos.y, width: '200px', height: '174px' }}
+          >
+            <div className="absolute inset-0 bg-white transition-transform duration-500 group-hover:scale-105 group-hover:z-50 cursor-pointer shadow-lg" style={hexClipPath} onClick={() => onNavigate({ page: 'services' })}>
+              <div className="absolute inset-[4px] overflow-hidden" style={hexClipPath}>
+                <img src={showcaseServices[pos.index].image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-115" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                <div className="absolute bottom-[20%] left-0 right-0 flex justify-center z-20 px-2 w-[85%] mx-auto">
+                  <span className="text-white text-[11px] font-black uppercase tracking-wider text-center leading-[1.2] drop-shadow-md break-words">
+                    {showcaseServices[pos.index].name}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

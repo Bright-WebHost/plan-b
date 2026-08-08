@@ -9,7 +9,7 @@ interface AboutSectionProps {
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
   return (
-    <section className="py-24 bg-[#FAFAFA] relative overflow-hidden">
+    <section className="py-8 md:py-16 bg-[#FAFAFA] relative overflow-hidden">
       {/* Absolute Grid Background */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none"
@@ -30,37 +30,36 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onNavigate }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-2 gap-4 md:gap-8 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-100px' }}
-            className="space-y-6"
+            className="space-y-3 md:space-y-6"
           >
             <h2 
-              className="text-xs font-bold text-[#EBA60A] uppercase tracking-[0.2em] mb-4 flex items-center gap-2"
+              className="text-[8px] md:text-xs font-bold text-[#EBA60A] uppercase tracking-[0.2em] mb-1 md:mb-4 flex items-center gap-1 md:gap-2"
               style={{ fontFamily: '"Inter Tight", sans-serif' }}
             >
-              <Hexagon className="w-4 h-4 fill-[#EBA60A]/20" /> ABOUT PLAN B
+              <Hexagon className="w-3 h-3 md:w-4 md:h-4 fill-[#EBA60A]/20" /> ABOUT PLAN B
             </h2>
             <h3 
-              className="text-4xl md:text-5xl font-extrabold text-black leading-[1.1] uppercase tracking-tight"
+              className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-extrabold text-black leading-[1.1] uppercase tracking-tight"
               style={{ fontFamily: '"Inter Tight", sans-serif' }}
             >
               The Smarter Way to Build & Manage
             </h3>
             <p 
-              className="text-[#666] text-lg leading-[1.7]"
+              className="text-[#666] text-[10px] sm:text-xs md:text-lg leading-[1.5] md:leading-[1.7]"
               style={{ fontFamily: '"Inter Tight", sans-serif', fontWeight: 500 }}
             >
               PLAN B is a singular, premium provider offering all 13 specialized services under one roof. We take the headache out of project management by giving you a single point of contact. Whether it's a commercial build or a new home, our in-house experts ensure everything is done on time, on budget, and to the highest standard.
             </p>
             <button
               onClick={() => onNavigate({ page: 'about' })}
-              className="mt-4 px-8 py-4 bg-[#EBA60A] text-black hover:bg-[#d69608] transition-colors inline-flex items-center justify-center relative z-10"
+              className="mt-2 md:mt-4 px-4 py-2 md:px-8 md:py-4 text-[9px] md:text-[0.9rem] bg-[#EBA60A] text-black hover:bg-[#d69608] transition-colors inline-flex items-center justify-center relative z-10"
               style={{
                 fontFamily: '"Inter Tight", sans-serif',
-                fontSize: '0.9rem',
                 fontWeight: 700,
                 borderRadius: '0px'
               }}
