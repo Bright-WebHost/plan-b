@@ -13,13 +13,50 @@ import { QuoteModal } from './components/common/QuoteModal';
 import { WhatsAppWidget } from './components/common/WhatsAppWidget';
 
 export function App() {
-  const [route, setRoute] = useState<RouteState>({ page: 'home' });
+  // Initialize route from the current URL path
+  const getInitialRoute = (): RouteState => {
+    const path = window.location.pathname.substring(1); // remove leading slash
+    if (!path) return { page: 'home' };
+    
+    // Basic route parsing (can be expanded later for params)
+    const validPages = ['home', 'about', 'services', 'projects', 'contact'];
+    if (validPages.includes(path)) {
+      return { page: path as any };
+    }
+    return { page: 'home' };
+  };
+
+  const [route, setRoute] = useState<RouteState>(getInitialRoute());
   const [searchOpen, setSearchOpen] = useState(false);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [quoteCategoryId, setQuoteCategoryId] = useState<string | undefined>(undefined);
 
-  // Scroll to top whenever route changes
+  // Handle Browser Back/Forward navigation
   useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname.substring(1);
+      const validPages = ['home', 'about', 'services', 'projects', 'contact'];
+      if (validPages.includes(path)) {
+        setRoute({ page: path as any });
+      } else {
+        setRoute({ page: 'home' });
+      }
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Sync state to URL and Scroll to top whenever route changes
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    const newPath = route.page === 'home' ? '/' : `/${route.page}`;
+    
+    // Update URL if it doesn't match the state
+    if (currentPath !== newPath) {
+      window.history.pushState({}, '', newPath);
+    }
+    
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [route]);
 
