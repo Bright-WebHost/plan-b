@@ -9,7 +9,6 @@ import { ProjectsPage } from './components/pages/ProjectsPage';
 import { ContactPage } from './components/pages/ContactPage';
 
 import { SearchModal } from './components/common/SearchModal';
-import { QuoteModal } from './components/common/QuoteModal';
 import { WhatsAppWidget } from './components/common/WhatsAppWidget';
 
 export function App() {
@@ -28,8 +27,6 @@ export function App() {
 
   const [route, setRoute] = useState<RouteState>(getInitialRoute());
   const [searchOpen, setSearchOpen] = useState(false);
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
-  const [quoteCategoryId, setQuoteCategoryId] = useState<string | undefined>(undefined);
 
   // Handle Browser Back/Forward navigation
   useEffect(() => {
@@ -57,17 +54,14 @@ export function App() {
       window.history.pushState({}, '', newPath);
     }
     
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   }, [route]);
 
   const handleNavigate = (newRoute: RouteState) => {
     setRoute(newRoute);
   };
 
-  const handleOpenQuote = (categoryId?: string) => {
-    setQuoteCategoryId(categoryId);
-    setQuoteModalOpen(true);
-  };
+
 
   return (
     <div className="min-h-screen bg-[var(--bg-natural)] text-[var(--text-primary)] flex flex-col font-sans selection:bg-[var(--accent-yellow)] selection:text-black">
@@ -76,25 +70,23 @@ export function App() {
         currentRoute={route}
         onNavigate={handleNavigate}
         onOpenSearch={() => setSearchOpen(true)}
-        onOpenQuote={() => handleOpenQuote()}
       />
 
       {/* Main Page Render */}
       <main className="flex-1">
         {route.page === 'home' && (
-          <HomePage onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
+          <HomePage onNavigate={handleNavigate} />
         )}
         {route.page === 'about' && (
-          <AboutPage onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
+          <AboutPage onNavigate={handleNavigate} />
         )}
         {route.page === 'services' && (
-          <ServicesPage onNavigate={handleNavigate} onOpenQuote={handleOpenQuote} />
+          <ServicesPage onNavigate={handleNavigate} />
         )}
         {route.page === 'projects' && (
           <ProjectsPage
             initialProjectId={route.params?.projectId}
             onNavigate={handleNavigate}
-            onOpenQuote={handleOpenQuote}
           />
         )}
         {route.page === 'contact' && (
@@ -105,7 +97,6 @@ export function App() {
       {/* Global Footer */}
       <Footer
         onNavigate={handleNavigate}
-        onOpenQuote={handleOpenQuote}
       />
 
       {/* Global Interactive Modals & Widgets */}
@@ -115,11 +106,7 @@ export function App() {
         onNavigate={handleNavigate}
       />
 
-      <QuoteModal
-        isOpen={quoteModalOpen}
-        onClose={() => setQuoteModalOpen(false)}
-        initialCategoryId={quoteCategoryId}
-      />
+
 
       <WhatsAppWidget />
     </div>

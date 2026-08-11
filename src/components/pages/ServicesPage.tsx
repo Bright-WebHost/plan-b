@@ -6,7 +6,6 @@ import { RouteState } from '../../types';
 
 interface ServicesPageProps {
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: () => void;
 }
 
 // Map string icon names to Lucide icons
@@ -34,7 +33,7 @@ const getGridSpanClasses = (index: number) => {
   return classes[index] || 'md:col-span-1 md:row-span-1';
 };
 
-export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQuote }) => {
+export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
   return (
     <div className="bg-[#FAFAFA] text-black min-h-screen font-sans">
       {/* 1. Solid Gold Block Hero Section */}
@@ -108,7 +107,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQu
                         </p>
                         
                         <button
-                          onClick={onOpenQuote}
+                          onClick={() => onNavigate({ page: 'contact' })}
                           className="inline-flex items-center gap-2 text-black text-sm font-bold uppercase tracking-wider group-hover:text-[#EBA60A] transition-colors"
                         >
                           Explore Domain <ArrowRight className="w-4 h-4" />
@@ -133,7 +132,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate, onOpenQu
             Build The Future <br/> With PLAN B
           </h2>
           <button
-            onClick={onOpenQuote}
+            onClick={() => onNavigate({ page: 'contact' })}
             className="group px-6 py-4 md:px-8 md:py-5 bg-black text-white rounded-full text-base md:text-lg font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300 inline-flex items-center gap-4 overflow-hidden relative"
           >
             <span className="relative z-10">Start Your Project</span>

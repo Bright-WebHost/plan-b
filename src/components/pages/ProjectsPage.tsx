@@ -7,14 +7,13 @@ import { RouteState } from '../../types';
 interface ProjectsPageProps {
   initialProjectId?: string;
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: () => void;
 }
 
-export const ProjectsPage: React.FC<ProjectsPageProps> = ({ initialProjectId, onNavigate, onOpenQuote }) => {
+export const ProjectsPage: React.FC<ProjectsPageProps> = ({ initialProjectId, onNavigate }) => {
   const [activeFilter, setActiveFilter] = useState('All');
 
   // We can filter by Category Name
-  const categories = ['All', 'Solar', 'CCTV', 'Deep Cleaning', 'Architecture', 'Interior', 'Automation'];
+  const categories = ['All', 'Solar', 'CCTV', 'Deep Cleaning', 'Architecture', 'Interior', 'Automation', 'Insurance'];
 
   const filteredProjects = activeFilter === 'All' 
     ? PROJECTS_DATA 
@@ -23,21 +22,28 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ initialProjectId, on
   return (
     <div className="bg-[var(--bg-natural)] text-[var(--text-primary)] min-h-screen">
       {/* Header */}
-      <section className="pt-32 pb-20 bg-[#0A0A0A] text-white text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#EBA60A]/10 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/3"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h1 
+      <section className="pt-32 md:pt-40 pb-16 relative overflow-hidden flex flex-col items-center justify-center">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#EBA60A]/10 rounded-full blur-[150px] pointer-events-none"></div>
+        
+        <div className="relative z-10 w-full text-center px-4 md:px-8">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-black uppercase font-serif-title mb-6"
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="bg-[#EBA60A] py-8 md:py-12 w-full max-w-[1200px] mx-auto mb-10 flex flex-col items-center justify-center"
           >
-            Project <span className="text-[#EBA60A]">Portfolio</span>
-          </motion.h1>
+            <h1 className="text-[16vw] md:text-[10vw] font-black uppercase leading-[0.8] tracking-tighter text-black" style={{ fontFamily: '"Inter Tight", sans-serif' }}>
+              PROJECT
+            </h1>
+            <h2 className="text-[8vw] md:text-[5vw] font-black uppercase text-white leading-none tracking-tight mt-1" style={{ fontFamily: '"Inter Tight", sans-serif' }}>
+              Portfolio
+            </h2>
+          </motion.div>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-[#A3A3A3] max-w-2xl mx-auto font-medium"
+            transition={{ delay: 0.3 }}
+            className="text-[#444] text-base md:text-xl max-w-2xl mx-auto font-medium leading-relaxed"
           >
             Explore our curated gallery of premium executions across all service domains.
           </motion.p>
@@ -130,7 +136,7 @@ export const ProjectsPage: React.FC<ProjectsPageProps> = ({ initialProjectId, on
           <h2 className="text-4xl font-black uppercase font-serif-title mb-6">Inspired?</h2>
           <p className="text-xl font-medium mb-8">Let's create something extraordinary together.</p>
           <button
-            onClick={onOpenQuote}
+            onClick={() => onNavigate({ page: 'contact' })}
             className="px-8 py-4 bg-black text-white font-bold rounded-xl text-lg hover:opacity-90 transition-all uppercase tracking-wide inline-flex items-center gap-2"
           >
             Request a Quote <ArrowRight className="w-5 h-5" />

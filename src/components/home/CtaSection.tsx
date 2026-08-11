@@ -5,10 +5,9 @@ import { RouteState } from '../../types';
 
 interface CtaSectionProps {
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: () => void;
 }
 
-export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate, onOpenQuote }) => {
+export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate }) => {
   return (
     <section className="relative overflow-hidden bg-[#EBA60A] py-32 border-y-8 border-black">
       {/* Background Graphic */}
@@ -37,13 +36,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onNavigate, onOpenQuote 
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <button
-              onClick={onOpenQuote}
-              className="group px-10 py-5 bg-black text-white font-black text-sm hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-3 border-2 border-black"
-            >
-              Get a Free Quote
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+
             <button
               onClick={() => onNavigate({ page: 'contact' })}
               className="group px-10 py-5 bg-transparent border-2 border-black text-black font-black text-sm hover:bg-black hover:text-white transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-3"

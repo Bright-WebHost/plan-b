@@ -4,10 +4,9 @@ import { RouteState } from '../../types';
 
 interface FooterProps {
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: (categoryId?: string) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuote }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   const nav = (page: string, params?: any) => {
     onNavigate({ page: page as any, params });
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -58,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenQuote }) => {
                 <MapPin className="w-4 h-4 text-[#EBA60A] shrink-0" /> Mangalore, Karnataka
               </li>
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#EBA60A] shrink-0" /> +91 9731839227
+                <Phone className="w-4 h-4 text-[#EBA60A] shrink-0" /> +91 81479 89035
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#EBA60A] shrink-0" /> info@planb.com

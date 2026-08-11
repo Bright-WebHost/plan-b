@@ -54,7 +54,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: 'Mangalore',
     completionDate: '2025',
     budgetRange: 'Enterprise',
-    image: '/images/home-automation.png',
+    image: '/images/mangalore.png',
     description: 'Extensive deployment of Securus cameras, PTZ, and ANPR systems across Mangalore for enhanced city-wide monitoring and security.',
     specs: ['ANPR Systems', 'Smart Cloud AI Analytics', 'eAlert Integration'],
     gallery: [
@@ -88,11 +88,11 @@ export const PROJECTS_DATA: ProjectItem[] = [
     location: 'South Canara',
     completionDate: 'Ongoing',
     budgetRange: 'Enterprise',
-    image: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/insurence.jpg',
     description: 'Providing extensive corporate insurance coverage including fire, marine, and erection all risk for large-scale businesses across the region, with dedicated end-to-end claims support.',
     specs: ['End-to-End Coverage', 'Dedicated Claims Support', '30+ National Awards'],
     gallery: [
-      'https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80'
+      '/images/insurence.jpg'
     ]
   }
 ];

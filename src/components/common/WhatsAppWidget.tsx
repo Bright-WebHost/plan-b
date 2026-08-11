@@ -8,7 +8,7 @@ export const WhatsAppWidget: React.FC = () => {
 
   const handleSend = () => {
     const text = encodeURIComponent(msg || 'Hello PLAN B Team! I would like to inquire about your verified services.');
-    window.open(`https://wa.me/18004837839?text=${text}`, '_blank');
+    window.open(`https://wa.me/918147989035?text=${text}`, '_blank');
     setIsOpen(false);
     setMsg('');
   };

@@ -8,14 +8,12 @@ interface NavbarProps {
   currentRoute: RouteState;
   onNavigate: (route: RouteState) => void;
   onOpenSearch: () => void;
-  onOpenQuote: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentRoute,
   onNavigate,
-  onOpenSearch,
-  onOpenQuote
+  onOpenSearch
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -93,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Action Buttons */}
         <div className="hidden lg:flex items-center gap-3">
           <button
-            onClick={onOpenQuote}
+            onClick={() => handleNavClick({ page: 'contact' })}
             className="px-6 py-2.5 rounded-xl text-sm font-bold text-[#000000] bg-[var(--accent-yellow)] hover:opacity-90 transition-all shadow-md flex items-center gap-2 uppercase tracking-wide"
           >
             Get a Quote
@@ -145,8 +143,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="pt-2 flex flex-col gap-2">
               <button
                 onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
+                  handleNavClick({ page: 'contact' });
                 }}
                 className="w-full py-4 bg-[var(--accent-yellow)] hover:opacity-90 text-black font-bold rounded-xl text-sm flex items-center justify-center gap-2 uppercase"
               >

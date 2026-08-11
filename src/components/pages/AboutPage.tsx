@@ -5,10 +5,9 @@ import { RouteState } from '../../types';
 
 interface AboutPageProps {
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: () => void;
 }
 
-export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote }) => {
+export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
   return (
     <div className="bg-[#ffffff] text-black">
       {/* 1. Our Story & Hero */}
@@ -230,7 +229,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenQuote })
         </div>
       </section>
 
-      {/* 5 & 6. The Hive Concept & Why PLAN B */}
       <section className="py-16 md:py-32 bg-[#EBA60A] text-black overflow-hidden relative border-y-8 border-black">
         {/* Massive Typography Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 overflow-hidden w-full h-full flex items-center justify-center opacity-[0.05]">

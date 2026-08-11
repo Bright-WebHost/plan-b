@@ -13,10 +13,9 @@ import { AboutSection } from '../home/AboutSection';
 
 interface HomePageProps {
   onNavigate: (route: RouteState) => void;
-  onOpenQuote: () => void;
 }
 
-export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) => {
+export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="bg-[var(--bg-natural)] text-[var(--text-primary)]">
       <HeroSection onNavigate={onNavigate} />
@@ -26,7 +25,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenQuote }) =
       <ServiceCategoriesSection onNavigate={onNavigate} />
       <StatisticsSection />
       <TestimonialsSection />
-      <CtaSection onNavigate={onNavigate} onOpenQuote={onOpenQuote} />
+      <CtaSection onNavigate={onNavigate} />
     </div>
   );
 };
